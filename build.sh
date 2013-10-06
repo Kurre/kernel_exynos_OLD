@@ -25,12 +25,6 @@ export CROSS_COMPILE=/home/ubu/dev/kernel/toolchains/gcc-linaro-4.7-2013.04/bin/
 
 echo 'exporting Cross Compile'
 
-# Make sure build is clean!
-echo "Removing old zImage"
-rm -f arch/arm/boot/zImage
-echo 'Cleaning build'
-make clean
-
 # Generates a new .config and exists
 if [ "$1" = "config" ] ; then
 	echo 'Making defconfig for Manta'
@@ -56,6 +50,13 @@ re='^[0-9]+$'
 if [[ $1 =~ $re ]] ; then
 	# Lets go!
 	echo 'Lets start!'
+
+	# Make sure build is clean!
+	echo "Removing old zImage"
+	rm -f arch/arm/boot/zImage
+	echo 'Cleaning build'
+	make clean
+
 	#make -j$1
 	make -j$1 V=99 2>&1 |tee build-r$NEWVERSION.log
 else
