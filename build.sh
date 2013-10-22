@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Stupid shell script to compile kernel, nothing fancy
+# Original script from SlimBean Mako kernel
 
 ((!$#)) && echo -e "No arguments supplied!\nTry 'config', 'menuconfig' or value of '1-9'" && exit 1
 
